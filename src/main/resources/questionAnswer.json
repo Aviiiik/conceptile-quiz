@@ -1,0 +1,182 @@
+[
+  {
+    "id": "q1",
+    "question": "What is the capital of India?",
+    "options": ["Delhi", "Mumbai", "Kolkata", "Chennai"],
+    "correctAnswer": "Delhi"
+  },
+  {
+    "id": "q2",
+    "question": "What is 2+2?",
+    "options": ["3", "4", "5", "6"],
+    "correctAnswer": "4"
+  },
+  {
+    "id": "q3",
+    "question": "Who wrote the Harry Potter series?",
+    "options": ["J.K. Rowling", "J.R.R. Tolkien", "George R.R. Martin", "C.S. Lewis"],
+    "correctAnswer": "J.K. Rowling"
+  },
+  {
+    "id": "q4",
+    "question": "What is the largest planet in the Solar System?",
+    "options": ["Earth", "Mars", "Jupiter", "Saturn"],
+    "correctAnswer": "Jupiter"
+  },
+  {
+    "id": "q5",
+    "question": "What is the chemical symbol for water?",
+    "options": ["H2O", "O2", "CO2", "NaCl"],
+    "correctAnswer": "H2O"
+  },
+  {
+    "id": "q6",
+    "question": "Who painted the Mona Lisa?",
+    "options": ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso", "Claude Monet"],
+    "correctAnswer": "Leonardo da Vinci"
+  },
+  {
+    "id": "q7",
+    "question": "Which element has the atomic number 1?",
+    "options": ["Oxygen", "Hydrogen", "Carbon", "Nitrogen"],
+    "correctAnswer": "Hydrogen"
+  },
+  {
+    "id": "q8",
+    "question": "Which country is known as the Land of the Rising Sun?",
+    "options": ["China", "Japan", "Korea", "Thailand"],
+    "correctAnswer": "Japan"
+  },
+  {
+    "id": "q9",
+    "question": "What is the smallest prime number?",
+    "options": ["1", "2", "3", "5"],
+    "correctAnswer": "2"
+  },
+  {
+    "id": "q10",
+    "question": "What is the capital of France?",
+    "options": ["Berlin", "Madrid", "Paris", "Rome"],
+    "correctAnswer": "Paris"
+  },
+  {
+    "id": "q11",
+    "question": "What is the freezing point of water in Celsius?",
+    "options": ["0", "32", "100", "273"],
+    "correctAnswer": "0"
+  },
+  {
+    "id": "q12",
+    "question": "Who is known as the Father of Computers?",
+    "options": ["Charles Babbage", "Alan Turing", "Ada Lovelace", "John von Neumann"],
+    "correctAnswer": "Charles Babbage"
+  },
+  {
+    "id": "q13",
+    "question": "Which organ is responsible for pumping blood in the human body?",
+    "options": ["Brain", "Liver", "Heart", "Kidneys"],
+    "correctAnswer": "Heart"
+  },
+  {
+    "id": "q14",
+    "question": "Which planet is closest to the Sun?",
+    "options": ["Venus", "Earth", "Mars", "Mercury"],
+    "correctAnswer": "Mercury"
+  },
+  {
+    "id": "q15",
+    "question": "What is the square root of 16?",
+    "options": ["2", "3", "4", "5"],
+    "correctAnswer": "4"
+  },
+  {
+    "id": "q16",
+    "question": "What is the capital of the United States?",
+    "options": ["New York", "Los Angeles", "Washington, D.C.", "Chicago"],
+    "correctAnswer": "Washington, D.C."
+  },
+  {
+    "id": "q17",
+    "question": "Who discovered gravity?",
+    "options": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"],
+    "correctAnswer": "Isaac Newton"
+  },
+  {
+    "id": "q18",
+    "question": "Which ocean is the largest?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+    "correctAnswer": "Pacific Ocean"
+  },
+  {
+    "id": "q19",
+    "question": "Who was the first President of the United States?",
+    "options": ["Thomas Jefferson", "Abraham Lincoln", "George Washington", "John Adams"],
+    "correctAnswer": "George Washington"
+  },
+  {
+    "id": "q20",
+    "question": "What is the boiling point of water in Celsius?",
+    "options": ["100", "0", "273", "212"],
+    "correctAnswer": "100"
+  },
+  {
+    "id": "q21",
+    "question": "What is the capital of Italy?",
+    "options": ["Rome", "Venice", "Milan", "Naples"],
+    "correctAnswer": "Rome"
+  },
+  {
+    "id": "q22",
+    "question": "What is 10 divided by 2?",
+    "options": ["2", "4", "5", "10"],
+    "correctAnswer": "5"
+  },
+  {
+    "id": "q23",
+    "question": "Which animal is known as the King of the Jungle?",
+    "options": ["Tiger", "Elephant", "Lion", "Bear"],
+    "correctAnswer": "Lion"
+  },
+  {
+    "id": "q24",
+    "question": "What is the largest mammal?",
+    "options": ["Elephant", "Blue Whale", "Giraffe", "Rhino"],
+    "correctAnswer": "Blue Whale"
+  },
+  {
+    "id": "q25",
+    "question": "Who invented the telephone?",
+    "options": ["Thomas Edison", "Alexander Graham Bell", "Nikola Tesla", "Michael Faraday"],
+    "correctAnswer": "Alexander Graham Bell"
+  },
+  {
+    "id": "q26",
+    "question": "What is the chemical symbol for gold?",
+    "options": ["Ag", "Au", "Pb", "Hg"],
+    "correctAnswer": "Au"
+  },
+  {
+    "id": "q27",
+    "question": "What is the tallest mountain in the world?",
+    "options": ["K2", "Mount Everest", "Kangchenjunga", "Makalu"],
+    "correctAnswer": "Mount Everest"
+  },
+  {
+    "id": "q28",
+    "question": "What is the speed of light in a vacuum?",
+    "options": ["3 x 10^8 m/s", "3 x 10^6 m/s", "300,000 m/s", "3,000 m/s"],
+    "correctAnswer": "3 x 10^8 m/s"
+  },
+  {
+    "id": "q29",
+    "question": "What is the capital of Germany?",
+    "options": ["Berlin", "Munich", "Hamburg", "Frankfurt"],
+    "correctAnswer": "Berlin"
+  },
+  {
+    "id": "q30",
+    "question": "Who wrote 'Romeo and Juliet'?",
+    "options": ["William Shakespeare", "Charles Dickens", "Mark Twain", "Jane Austen"],
+    "correctAnswer": "William Shakespeare"
+  }
+]

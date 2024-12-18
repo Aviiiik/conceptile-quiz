@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Interactive Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .username-section, .quiz-section {
+            display: none;
+        }
+        .username-section.active, .quiz-section.active {
+            display: block;
+        }
+        .input-group {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .input-group input {
+            padding: 10px;
+            font-size: 16px;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .input-group button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .input-group button:hover {
+            background-color: #2980b9;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+            padding: 5px 10px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .options label:hover {
+            background-color: #d5dbdb;
+        }
+        .submit-btn, .next-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-btn:hover, .next-btn:hover {
+            background-color: #c0392b;
+        }
+        .answer {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .answer.correct {
+            color: green;
+        }
+        .answer.wrong {
+            color: red;
+        }
+        .next-btn {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Username Input Section -->
+    <div class="username-section active" id="username-section">
+        <h1>Welcome to the Interactive Quiz!</h1>
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Enter your name" />
+            <button onclick="startQuiz()">Start Quiz</button>
+        </div>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="quiz-section" id="quiz-section">
+        <h2 id="welcome-message"></h2>
+        <div th:if="${questions}" th:each="question, questionStat : ${questions}" class="question"
+             th:style="${questionStat.index == 0} ? 'display:block' : 'display:none'"
+             th:id="'question-' + ${questionStat.index}">
+            <h2 th:text="${question.question}">Question</h2>
+            <div class="options">
+                <label th:each="option : ${question.options}">
+                    <input type="radio" th:name="'answer-' + ${questionStat.index}" th:value="${option}" />
+                    <span th:text="${option}">Option</span>
+                </label>
+            </div>
+            <button class="submit-btn" onclick="checkAnswer(this)" th:data-correct="${question.correctAnswer}">
+                Submit
+            </button>
+            <div class="answer" style="display:none;"></div>
+        </div>
+        <button class="next-btn" onclick="nextQuestion()">Next Question</button>
+    </div>
+</div>
+
+<script>
+    let currentScore = 0; // Tracks the user's score
+    let currentQuestionIndex = 0; // Tracks the current question index
+    const questions = document.querySelectorAll('.question'); // Select all question elements
+    const nextButton = document.querySelector('.next-btn'); // Next button element
+
+    // Function to start the quiz
+    function startQuiz() {
+        const username = document.getElementById('username').value.trim();
+        if (username === "") {
+            alert("Please enter your name to start the quiz!");
+            return;
+        }
+
+        // Display the quiz section
+        document.getElementById('username-section').classList.remove('active');
+        document.getElementById('quiz-section').classList.add('active');
+        document.getElementById('welcome-message').textContent = `Good luck, ${username}!`;
+    }
+
+    // Function to check the user's answer
+    function checkAnswer(button) {
+        const correctAnswer = button.getAttribute('data-correct');
+        const selectedOption = document.querySelector(
+            `input[name="answer-${currentQuestionIndex}"]:checked`
+        );
+        const answerDiv = button.nextElementSibling;
+
+        if (selectedOption) {
+            if (selectedOption.value === correctAnswer) {
+                answerDiv.textContent = "🎉 Correct!";
+                answerDiv.className = "answer correct";
+                currentScore += 1;
+            } else {
+                answerDiv.textContent = `❌ Wrong! Correct Answer: ${correctAnswer}`;
+                answerDiv.className = "answer wrong";
+            }
+            answerDiv.style.display = "block";
+            button.disabled = true;
+            nextButton.style.display = "inline-block";
+        } else {
+            alert("Please select an option!");
+        }
+    }
+
+    // Function to display the next question
+    function nextQuestion() {
+        questions[currentQuestionIndex].style.display = "none";
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            questions[currentQuestionIndex].style.display = "block";
+            nextButton.style.display = "none";
+        } else {
+            showFinalScore();
+        }
+    }
+
+    // Function to show the final score and fetch the highest score
+    function showFinalScore() {
+        const username = document.getElementById('username').value.trim();
+
+        // Send score to the backend
+        fetch('/conceptile/quiz/v1/submitScore', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `username=${username}&score=${currentScore}`
+        }).then(() => {
+            // Fetch the highest score
+            return fetch('/conceptile/quiz/v1/highestScore');
+        }).then(response => response.json())
+        .then(data => {
+            const highestScoreMessage = data ?
+                `🏆 Highest Score: ${data.score} by ${data.username}` :
+                "No highest score yet!";
+            document.body.innerHTML = `
+                <div class="container">
+                    <h2>🎉 Quiz Completed! 🎉</h2>
+                    <p>Your Score: ${currentScore}</p>
+                    <p>${highestScoreMessage}</p>
+                </div>`;
+        }).catch(error => console.error('Error:', error));
+    }
+</script>
+</body>
+</html>
